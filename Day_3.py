@@ -1,4 +1,4 @@
-def part_1(right=3, down=1):
+def calc_trees(right=3, down=1) -> int:
     # initialise variables
     trees = 0
     x = 0
@@ -16,9 +16,10 @@ def part_1(right=3, down=1):
     return trees
 
 
-def part_2():
-    return part_1(1, 1) * part_1() * part_1(5, 1) * part_1(7, 1) * part_1(1, 2)
+def part_2() -> int:
+    return calc_trees(1, 1) * calc_trees() * calc_trees(5, 1) * calc_trees(7, 1) * calc_trees(1, 2)
 
 
-print(part_1())
-print(part_2())
+if __name__ == "__main__":
+    print("Part 1:", calc_trees())
+    print("Part 2:", part_2())
