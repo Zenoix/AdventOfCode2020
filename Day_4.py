@@ -122,5 +122,5 @@ def part_2() -> int:
 
 
 if __name__ == "__main__":
-    print(part_1())
-    print(part_2())
+    print("Part 1:", part_1())
+    print("Part 2:", part_2())
