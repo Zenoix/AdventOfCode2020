@@ -13,9 +13,7 @@ def handle_input() -> list:
 # check if passport contains all required values
 def initial_check(values: str) -> bool:
     conditions = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"]
-    if all(condition in values for condition in conditions):
-        return True
-    return False
+    return all(condition in values for condition in conditions)
 
 
 # check if birth year is valid
