@@ -2,9 +2,21 @@ import re
 
 
 def handle_input():
-    with open("input.txt", "r") as f:
+    with open("test.txt", "r") as f:
         rules = f.read().splitlines()
     return rules
+
+
+def rules_to_dict(rules):
+    output = {}
+    for rule in rules:
+        outer = re.findall(r"^(.+?) bag", rule)
+        print(outer)
+        inner = re.findall(r"\d (.+?) bag", rule)
+        amount = re.findall(r"(\d+)", rule)
+        output[outer[0]] = {k: v for k, v in zip(inner, amount)}
+        
+    return output
 
 
 def part_1(rules):
@@ -26,14 +38,16 @@ def part_1(rules):
     return len(output)
 
 
-def part_2(rules):
-
+def part_2(rules: dict):
+    if len(rules[next(iter(rules))]) == 0:
+        return
     return
 
 
 if __name__ == "__main__":
     rules = handle_input()
-    print(part_1(rules))
-    print(part_2(rules))
+    rules_to_dict(rules)
+    #print(part_1(rules))
+    #print(part_2(rules))
         
 
