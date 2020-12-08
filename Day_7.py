@@ -32,7 +32,7 @@ def rules_to_dict(rules: list[str]) -> dict:
     return output
 
 
-# part 1 code
+# part 1 code (inefficient but can't be bothered optimising)
 def part_1(rules: list[str]) -> int:
     # initialise empty output set
     output = set()
