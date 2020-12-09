@@ -1,4 +1,5 @@
-from typing import Union
+# import copy to deepcopy the instructions list in part 2
+import copy
 
 
 # function to create a list from input
@@ -13,7 +14,7 @@ def handle_input() -> list[list[str]]:
 
 
 # part 1 code
-def part_1(instructions: list[list[str]]) -> Union[bool, int]:
+def part_1(instructions: list[list[str]]) -> (bool, int):
     # current index of instruction being run
     index = 0
     accumulate = 0
@@ -46,13 +47,13 @@ def part_2(instructions: list[list[str]]) -> int:
     # loop through the instructions using their indices
     for index in range(len(instructions)):
         # copy a testing instructions as we will modify it
-        test_instr = instructions[:]
+        test_instr = copy.deepcopy(instructions)
         # if the instruction at index is "jmp", replace "jmp" with "nop"
         if test_instr[index][0] == "jmp":
-            test_instr[index] = ["nop", test_instr[index][1]]
+            test_instr[index][0] = "nop"
         # else if the instruction at index is "nop", replace "nop" with "jmp"
         elif test_instr[index][0] == "nop":
-            test_instr[index] = ["jmp", test_instr[index][1]]
+            test_instr[index][0] = "jmp"
         # test the modified instruction using part_1 function
         result = part_1(test_instr)
 
