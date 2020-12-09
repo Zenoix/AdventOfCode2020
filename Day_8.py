@@ -45,14 +45,14 @@ def part_1(instructions: list[list[str]]) -> (bool, int):
 # part 2 code
 def part_2(instructions: list[list[str]]) -> int:
     # loop through the instructions using their indices
-    for index in range(len(instructions)):
+    for index, (operation, _) in enumerate(instructions):
         # copy a testing instructions as we will modify it
         test_instr = copy.deepcopy(instructions)
         # if the instruction at index is "jmp", replace "jmp" with "nop"
-        if test_instr[index][0] == "jmp":
+        if operation == "jmp":
             test_instr[index][0] = "nop"
         # else if the instruction at index is "nop", replace "nop" with "jmp"
-        elif test_instr[index][0] == "nop":
+        elif operation == "nop":
             test_instr[index][0] = "jmp"
         # test the modified instruction using part_1 function
         result = part_1(test_instr)
